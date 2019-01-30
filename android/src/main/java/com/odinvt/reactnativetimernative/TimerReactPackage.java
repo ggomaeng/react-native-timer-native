@@ -10,29 +10,24 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * React Native Timer
- * from：https://github.com/Odinvt
- * Author: Oussama El Bacha
- * GitHub:https://github.com/Odinvt
- * Email:oussama.elbacha@gmail.com
+ * React Native Timer from：https://github.com/Odinvt Author: Oussama El Bacha
+ * GitHub:https://github.com/Odinvt Email:oussama.elbacha@gmail.com
  */
 public class TimerReactPackage implements ReactPackage {
 
-    @Override
+    public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
+        List<NativeModule> modules = new ArrayList<>();
+
+        modules.add(new TimerModule(reactContext));
+
+        return modules;
+    }
+
     public List<Class<? extends JavaScriptModule>> createJSModules() {
         return Collections.emptyList();
     }
 
-    @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         return Collections.emptyList();
-    }
-
-    @Override
-    public List<NativeModule> createNativeModules(
-            ReactApplicationContext reactContext) {
-        List<NativeModule> modules = new ArrayList<>();
-        modules.add(new TimerModule(reactContext));
-        return modules;
     }
 }
